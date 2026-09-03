@@ -1,0 +1,147 @@
+{
+  "data": [
+    {
+      "stop": "1",
+      "stop_holding": "Dinosaur 1",
+      "stop_name": "Tyrannosaurus Rex",
+      "stop_image": "/dinos/images/Tyrannosaurus.jpg",
+      "stop_audio": "/dinos/audio/Tyrannosaurus.mp3",
+      "stop_front": "/dinos/images/Tyrannosaurus-front.jpg",
+      "stop_back": "/dinos/images/Tyrannosaurus-back.jpg",
+      "stop_description": "Some text here.",
+      "stop_model": "/dinos/models/Tyrannosaurus.glb"
+    },
+    {
+      "stop": "2",
+      "stop_holding": "Dinosaur 2",
+      "stop_name": "Leaellynasaura",
+      "stop_image": "/dinos/images/Leaellynasaura.jpg",
+      "stop_audio": "/dinos/audio/Leaellynasaura.mp3",
+      "stop_front": "/dinos/images/Leaellynasaura-front.jpg",
+      "stop_back": "/dinos/images/Leaellynasaura-back.jpg",
+      "stop_description": "Some text here.",
+      "stop_model": "/dinos/models/Leaellynasaura.glb"
+    },
+    {
+      "stop": "3",
+      "stop_holding": "Dinosaur 3",
+      "stop_name": "Spinosaurus",
+      "stop_image": "/dinos/images/Spinosaurus.jpg",
+      "stop_audio": "/dinos/audio/Spinosaurus.mp3",
+      "stop_front": "/dinos/images/Spinosaurus-front.jpg",
+      "stop_back": "/dinos/images/Spinosaurus-back.jpg",
+      "stop_description": "Some text here.",
+      "stop_model": "/dinos/models/Spinosaurus.glb"
+    },
+    {
+      "stop": "4",
+      "stop_holding": "Dinosaur 4",
+      "stop_name": "Velociraptor",
+      "stop_image": "/dinos/images/Velociraptor.jpg",
+      "stop_audio": "/dinos/audio/Velociraptor.mp3",
+      "stop_front": "/dinos/images/Velociraptor-front.jpg",
+      "stop_back": "/dinos/images/Velociraptor-back.jpg",
+      "stop_description": "Some text here.",
+      "stop_model": "/dinos/models/Velociraptor.glb"
+    },
+    {
+      "stop": "5",
+      "stop_holding": "Dinosaur 5",
+      "stop_name": "Amargasaurus",
+      "stop_image": "/dinos/images/Amargasaurus.jpg",
+      "stop_audio": "/dinos/audio/Amargasaurus.mp3",
+      "stop_front": "/dinos/images/Amargasaurus-front.jpg",
+      "stop_back": "/dinos/images/Amargasaurus-back.jpg",
+      "stop_description": "Some text here.",
+      "stop_model": "/dinos/models/Amargasaurus.glb"
+    },
+    {
+      "stop": "6",
+      "stop_holding": "Dinosaur 6",
+      "stop_name": "Carcharodontosaurus",
+      "stop_image": "/dinos/images/Carcharodontosaurus.jpg",
+      "stop_audio": "/dinos/audio/Carcharodontosaurus.mp3",
+      "stop_front": "/dinos/images/Carcharodontosaurus-front.jpg",
+      "stop_back": "/dinos/images/Carcharodontosaurus-back.jpg",
+      "stop_description": "Some text here.",
+      "stop_model": "/dinos/models/Carcharodontosaurus.glb"
+    },
+    {
+      "stop": "7",
+      "stop_holding": "Dinosaur 7",
+      "stop_name": "Kunbarrasaurus",
+      "stop_image": "/dinos/images/Kunbarrasaurus.jpg",
+      "stop_audio": "/dinos/audio/Kunbarrasaurus.mp3",
+      "stop_front": "/dinos/images/Kunbarrasaurus-front.jpg",
+      "stop_back": "/dinos/images/Kunbarrasaurus-back.jpg",
+      "stop_description": "Some text here.",
+      "stop_model": "/dinos/models/Kunbarrasaurus.glb"
+    },
+    {
+      "stop": "8",
+      "stop_holding": "Dinosaur 8",
+      "stop_name": "Muttaburrasaurus",
+      "stop_image": "/dinos/images/Muttaburrasaurus.jpg",
+      "stop_audio": "/dinos/audio/Muttaburrasaurus.mp3",
+      "stop_front": "/dinos/images/Muttaburrasaurus-front.jpg",
+      "stop_back": "/dinos/images/Muttaburrasaurus-back.jpg",
+      "stop_description": "Some text here.",
+      "stop_model": "/dinos/models/Muttaburrasaurus.glb"
+    },
+    {
+      "stop": "9",
+      "stop_holding": "Dinosaur 9",
+      "stop_name": "Protoceratops",
+      "stop_image": "/dinos/images/Protoceratops.jpg",
+      "stop_audio": "/dinos/audio/Protoceratops.mp3",
+      "stop_front": "/dinos/images/Protoceratops-front.jpg",
+      "stop_back": "/dinos/images/Protoceratops-back.jpg",
+      "stop_description": "Some text here.",
+      "stop_model": "/dinos/models/Protoceratops.glb"
+    },
+    {
+      "stop": "10",
+      "stop_holding": "Dinosaur 10",
+      "stop_name": "Styracosaurus",
+      "stop_image": "/dinos/images/Styracosaurus.jpg",
+      "stop_audio": "/dinos/audio/Styracosaurus.mp3",
+      "stop_front": "/dinos/images/Styracosaurus-front.jpg",
+      "stop_back": "/dinos/images/Styracosaurus-back.jpg",
+      "stop_description": "Some text here.",
+      "stop_model": "/dinos/models/Styracosaurus.glb"
+    },
+    {
+      "stop": "11",
+      "stop_holding": "Dinosaur 11",
+      "stop_name": "Therizinosaurus",
+      "stop_image": "/dinos/images/Therizinosaurus.jpg",
+      "stop_audio": "/dinos/audio/Therizinosaurus.mp3",
+      "stop_front": "/dinos/images/Therizinosaurus-front.jpg",
+      "stop_back": "/dinos/images/Therizinosaurus-back.jpg",
+      "stop_description": "Some text here.",
+      "stop_model": "/dinos/models/Therizinosaurus.glb"
+    },
+    {
+      "stop": "12",
+      "stop_holding": "Dinosaur 12",
+      "stop_name": "Australovenator",
+      "stop_image": "/dinos/images/Australovenator.jpg",
+      "stop_audio": "/dinos/audio/Australovenator.mp3",
+      "stop_front": "/dinos/images/Australovenator-front.jpg",
+      "stop_back": "/dinos/images/Australovenator-back.jpg",
+      "stop_description": "Some text here.",
+      "stop_model": "/dinos/models/Australovenator.glb"
+    },
+    {
+      "stop": "13",
+      "stop_holding": "Dinosaur 13",
+      "stop_name": "Stegosaurus",
+      "stop_image": "/dinos/images/Stegosaurus.jpg",
+      "stop_audio": "/dinos/audio/Stegosaurus.mp3",
+      "stop_front": "/dinos/images/Stegosaurus-front.jpg",
+      "stop_back": "/dinos/images/Stegosaurus-back.jpg",
+      "stop_description": "Some text here.",
+      "stop_model": "/dinos/models/Stegosaurus.glb"
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+<!doctype HTML>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.5.4/dist/aframe-extras.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+
+  <link rel="stylesheet" href="/style-2.css">
+</head>
+
+<body style='margin : 0px; overflow: hidden;'>
+  <!-- we add detectionMode and matrixCodeType to tell AR.js to recognize barcode markers -->
+
+
+  <a-scene id="camera" embedded
+    arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
+
+  </a-scene>
+
+
+  <div class="fixed">
+    <img src="./images/codescanner.png" alt="Code scanner" height="30px" style="margin-top: 1rem; text-align: right;" />
+    <button class="button"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"
+        fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+        class="lucide lucide-camera-icon lucide-camera">
+        <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" />
+        <circle cx="12" cy="13" r="3" />
+      </svg></button>
+
+    <button class="button-stops" onclick="location.href='./stops/index.html';">Stops</button>
+  </div>
+
+  <script>
+    async function getData() {
+      const url = "/dinos/data.json";
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error(`Response status: ${response.status}`);
+        }
+
+        const json = await response.json();
+        stops(json.data);
+      } catch (error) {
+        console.error(error.message);
+      }
+    }
+    getData();
+
+    async function stops(data) {
+      // console.log(data.length);
+
+      let loop = "";
+      loop += '  <a-assets>';
+      for (let i = 0; i < data.length; i++) {
+        loop += '    <a-asset-item id="ar-' + data[i].stop + '" src="' + data[i].stop_model + '"></a-asset-item>';
+      }
+      loop += '  </a-assets>';
+      for (let i = 0; i < data.length; i++) {
+        loop += '  <a-marker id="animated-marker" type="barcode" value="' + data[i].stop + '">';
+        loop += '    <a-entity gltf-model="#ar-' + data[i].stop + '" scale="2" animation-mixer="clip: *;" type="barcode"></a-entity>';
+        loop += '  </a-marker>';
+      }
+      loop += '  <a-entity camera></a-entity>';
+
+      document.getElementById("camera").innerHTML = loop;
+      listener();
+      // console.log(data);
+    }
+
+
+    async function listener() {
+      // Detecting multiple marker
+      let ms = document.querySelectorAll("a-marker");
+
+
+      for (let i = 0; i < ms.length; i++) {
+        ms[i].addEventListener("markerFound", (e) => {
+          //console.log(e.target.attributes.value.value);
+          var markerId = "2" + e.target.attributes.value.value;
+          //console.log(markerId);
+          localStorage.setItem(markerId, true);
+        });
+
+        ms[i].addEventListener("markerLost", (e) => {
+          //alert("Lost");
+        });
+      }
+    }
+  </script>
+</body>
+
+</html>

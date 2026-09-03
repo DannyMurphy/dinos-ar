@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no," />
+  <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.5.4/dist/aframe-extras.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <!-- Fathom - beautiful, simple website analytics -->
+  <script src="https://cdn.usefathom.com/script.js" data-site="TOFAEKGC" defer></script>
+  <!-- / Fathom -->
+  <link rel="stylesheet" href="/style-2.css" />
+</head>
+
+<body style="margin: 0px; overflow: hidden">
+  <!-- we add detectionMode and matrixCodeType to tell AR.js to recognize barcode markers -->
+
+  <a-scene id="camera" embedded=""
+    arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
+
+
+    <a-assets>
+      <a-asset-item id="ar-1" src="/dinos/models/Tyrannosaurus.glb"></a-asset-item>
+      <a-asset-item id="ar-2" src="/dinos/models/Leaellynasaura.glb"></a-asset-item>
+      <a-asset-item id="ar-3" src="/dinos/models/Australovenator.glb"></a-asset-item>
+      <a-asset-item id="ar-4" src="/dinos/models/Velociraptor.glb"></a-asset-item>
+      <a-asset-item id="ar-6" src="/dinos/models/Carcharodontosaurus.glb"></a-asset-item>
+      <a-asset-item id="ar-8" src="/dinos/models/Muttaburrasaurus.glb"></a-asset-item>
+      <a-asset-item id="ar-9" src="/dinos/models/Protoceratops.glb"></a-asset-item>
+      <a-asset-item id="ar-13" src="/dinos/models/Stegosaurus.glb"></a-asset-item>
+
+
+      <!-- Deleted -->
+      <a-asset-item id="ar-5" src="/dinos/models/Amargasaurus.glb"></a-asset-item>
+      <a-asset-item id="ar-7" src="/dinos/models/Kunbarrasaurus.glb"></a-asset-item>
+      <a-asset-item id="ar-10" src="/dinos/models/Styracosaurus.glb"></a-asset-item>
+      <a-asset-item id="ar-11" src="/dinos/models/Therizinosaurus.glb"></a-asset-item>
+      <a-asset-item id="ar-12" src="/dinos/models/Spinosaurus.glb"></a-asset-item>
+
+
+    </a-assets>
+    <a-marker id="animated-marker" type="barcode" value="1">
+      <a-entity gltf-model="#ar-1" scale="1" animation-mixer="clip: *;" type="barcode"></a-entity>
+    </a-marker>
+    <a-marker id="animated-marker" type="barcode" value="2">
+      <a-entity gltf-model="#ar-2" scale="1" animation-mixer="clip: *;" type="barcode"></a-entity>
+    </a-marker>
+    <a-marker id="animated-marker" type="barcode" value="3">
+      <a-entity gltf-model="#ar-3" scale="1" animation-mixer="clip: *;" type="barcode"></a-entity>
+    </a-marker>
+    <a-marker id="animated-marker" type="barcode" value="4">
+      <a-entity gltf-model="#ar-4" scale="1" animation-mixer="clip: *;" type="barcode"></a-entity>
+    </a-marker>
+    <a-marker id="animated-marker" type="barcode" value="5">
+      <a-entity gltf-model="#ar-5" scale="1" rotation="0 -90 90" animation-mixer="clip: *;" type="barcode"></a-entity>
+    </a-marker>
+    <a-marker id="animated-marker" type="barcode" value="6">
+      <a-entity gltf-model="#ar-6" scale="1" animation-mixer="clip: *;" type="barcode"></a-entity>
+    </a-marker>
+    <a-marker id="animated-marker" type="barcode" value="7">
+      <a-entity gltf-model="#ar-7" scale="1" animation-mixer="clip: *;" type="barcode"></a-entity>
+    </a-marker>
+    <a-marker id="animated-marker" type="barcode" value="8">
+      <a-entity gltf-model="#ar-8" scale="1" rotation="0 -90 90" animation-mixer="clip: *;" type="barcode"></a-entity>
+    </a-marker>
+    <a-marker id="animated-marker" type="barcode" value="9">
+      <a-entity gltf-model="#ar-9" scale="1" animation-mixer="clip: *;" type="barcode"></a-entity>
+    </a-marker>
+    <a-marker id="animated-marker" type="barcode" value="10">
+      <a-entity gltf-model="#ar-10" scale="1" rotation="0 -90 90" animation-mixer="clip: *;" type="barcode"></a-entity>
+    </a-marker>
+    <a-marker id="animated-marker" type="barcode" value="11">
+      <a-entity gltf-model="#ar-11" scale="1" animation-mixer="clip: *;" type="barcode"></a-entity>
+    </a-marker>
+    <a-marker id="animated-marker" type="barcode" value="12">
+      <a-entity gltf-model="#ar-12" scale="1" animation-mixer="clip: *;" type="barcode"></a-entity>
+    </a-marker>
+    <a-marker id="animated-marker" type="barcode" value="13">
+      <a-entity gltf-model="#ar-13" scale="1" animation-mixer="clip: *;" type="barcode"></a-entity>
+    </a-marker>
+    <a-entity camera=""></a-entity>
+    <div class="a-enter-vr fullscreen" aframe-injected="" style="position: fixed">
+      <button class="a-enter-vr-button" title="Enter VR mode with a headset or fullscreen without"
+        aframe-injected=""></button>
+    </div>
+    <div class="a-orientation-modal a-hidden" aframe-injected="">
+      <button aframe-injected="">Exit VR</button>
+    </div>
+    <a-entity light="" data-aframe-default-light="" aframe-injected=""></a-entity><a-entity light="" position=""
+      data-aframe-default-light="" aframe-injected=""></a-entity>
+  </a-scene>
+
+  <div id="footer" class="fixed">
+    <img src="./images/codescanner.png" alt="Code scanner" height="30px" style="margin-top: 1rem; text-align: right" />
+    <button class="button" onclick="removeButtons()">
+      <svg xmlns=" http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+        class="lucide lucide-camera-icon lucide-camera">
+        <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" />
+        <circle cx="12" cy="13" r="3" />
+      </svg>
+    </button>
+
+    <button class="button-stops" id="tally" onclick="location.href='./stops/index.html';">
+      Found Dinosaurs
+    </button>
+  </div>
+
+  <script>
+    async function getData() {
+      const url = "/dinos/data-2.json";
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error(`Response status: ${response.status}`);
+        }
+
+        const json = await response.json();
+        stops(json.data);
+      } catch (error) {
+        console.error(error.message);
+      }
+    }
+    getData();
+
+    async function stops(data) {
+      // console.log(data.length);
+
+      let loop = 0;
+
+      let loopButton = "";
+      loopButton += '<div class="actions">';
+
+      for (let i = 0; i < data.length; i++) {
+        let marker = localStorage.getItem('dinomarker2' + data[i].stop);
+
+        if (marker) {
+          loop++
+        }
+
+        loopButton += '<div class="action" id="action-' + data[i].stop + '" style="display:none;">';
+        loopButton += '  <button class="player" data-audio="' + data[i].stop_audio + '" onclick="playAudio(\'' + data[i].stop_audio + '\')"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-play-icon lucide-circle-play"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg> Play</button>';
+        loopButton += '  <button class="learn" data-front="' + data[i].stop_front + '" data-back="' + data[i].stop_back + '" onclick="show_image(\'' + data[i].stop_front + '\', \'' + data[i].stop_back + '\')"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info-icon lucide-info"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg> Learn</button>';
+        loopButton += '</div>';
+      }
+      loopButton += '</div>';
+
+      document.getElementById("footer").insertAdjacentHTML('beforebegin', loopButton);
+      document.getElementById("tally").insertAdjacentHTML('beforeend', '<span class="note">' + loop + '</span>');
+      // console.log(data);
+
+      let ms = document.querySelectorAll("a-marker");
+      for (let i = 0; i < ms.length; i++) {
+        ms[i].addEventListener("markerFound", (e) => {
+          //console.log(e.target.attributes.value.value);
+          let markerId = "dinomarker2" + e.target.attributes.value.value;
+          let actionId = "action-" + e.target.attributes.value.value;
+          //console.log(actionId);
+          localStorage.setItem(markerId, true);
+          fathom.trackEvent('stop ' + e.target.attributes.value.value);
+          removeButtons();
+          document.getElementById(actionId).style.display = 'flex';
+
+
+        });
+
+        ms[i].addEventListener("markerLost", (e) => {
+          //alert("Lost");
+        });
+      }
+    }
+
+    function removeButtons() {
+      // console.log("pressed");
+      let appButtons = document.getElementsByClassName('action');
+      for (let i = 0; i < appButtons.length; i++) {
+        appButtons[i].style.display = 'none';
+      }
+
+      actionButtonsRemoveColour('player');
+      actionButtonsRemoveColour('learn');
+      if (document.contains(document.getElementById("flip"))) {
+        document.getElementById("flip").remove();
+      }
+
+    }
+
+    function actionButtonsColour(myclass) {
+      // console.log("pressed");
+      let appButtons = document.getElementsByClassName(myclass);
+      for (let i = 0; i < appButtons.length; i++) {
+        appButtons[i].style.background = '#b0870e';
+      }
+
+    }
+    function actionButtonsRemoveColour(myclass) {
+      // console.log("pressed");
+      let appButtons = document.getElementsByClassName(myclass);
+      for (let i = 0; i < appButtons.length; i++) {
+        appButtons[i].style.background = 'black';
+      }
+    }
+    function show_image(srcFront, srcBack) {
+
+      if (document.contains(document.getElementById("flip"))) {
+        document.getElementById("flip").remove();
+
+        actionButtonsRemoveColour('learn');
+      } else {
+
+        actionButtonsColour('learn');
+
+        loop = "";
+        loop += '<div id="flip" class="card">';
+        loop += '  <div class="content">'
+        loop += '    <div class="front"><img src="' + srcFront + '" alt="Front"></div>';
+        loop += '    <div class="back"><img src="' + srcBack + '" alt="Back"></div>';
+        loop += '  </div>';
+        loop += '</div>';
+
+
+        document.getElementById("footer").insertAdjacentHTML('beforebegin', loop);
+
+
+
+
+        const card = document.querySelector(".card");
+        const frontSide = document.querySelector(".front img");
+        const backSide = document.querySelector(".back img");
+
+        frontSide.addEventListener("click", (e) => {
+          e.stopPropagation()
+          card.classList.toggle("active");
+        })
+        backSide.addEventListener("click", (e) => {
+          e.stopPropagation()
+          card.classList.toggle("active");
+        })
+        card.addEventListener("click", (e) => {
+          document.getElementById("flip").remove();
+          actionButtonsRemoveColour("learn");
+        })
+      }
+    }
+
+    let audio_;
+
+    function playAudio(src) {
+      if (audio_) {
+        audio_.pause();
+        audio_ = null;
+        actionButtonsRemoveColour();
+      } else {
+        const audio = audio_ = new Audio(src);
+        audio.play();
+        actionButtonsColour('player');
+
+
+        audio.onended = function () {
+          // console.log('Audio playback ended');
+          audio_ = null;
+          actionButtonsRemoveColour('player');
+        };
+      }
+    }
+
+
+  </script>
+
+</body>
+
+</html>

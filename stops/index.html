@@ -1,0 +1,93 @@
+<!doctype HTML>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.5.4/dist/aframe-extras.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <!-- Fathom - beautiful, simple website analytics -->
+  <script src="https://cdn.usefathom.com/script.js" data-site="TOFAEKGC" defer></script>
+  <!-- / Fathom -->
+  <link rel="stylesheet" href="/style-2.css">
+</head>
+
+<body style='margin : 0px;'>
+  <div class="content2">
+    <img src="../dinos/images/dino-hero.jpg" alt="Dinosaur Discovery" />
+    <h1>Little Big Dinosaur Trail</h1>
+
+    <div id="stops">
+
+
+    </div>
+  </div>
+  </div>
+
+  <div class="fixed">
+    <img src="../images/codescanner.png" alt="Code scanner" height="30px"
+      style="margin-top: 1rem; text-align: right;" />
+    <button class="button" onclick="location.href='../index.html';">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+        class="lucide lucide-camera-icon lucide-camera">
+        <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" />
+        <circle cx="12" cy="13" r="3" />
+      </svg></button>
+
+    <button class="button-stops">Found Dinosaurs</button>
+  </div>
+
+  <script>
+    async function getData() {
+      const url = "/dinos/data-2.json";
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error(`Response status: ${response.status}`);
+        }
+
+        const json = await response.json();
+        stops(json.data);
+      } catch (error) {
+        console.error(error.message);
+      }
+    }
+    getData();
+
+    async function stops(data) {
+      // console.log(data.length);
+
+      let loop = "";
+      for (let i = 0; i < data.length; i++) {
+        console.log(data[i].stop);
+        let marker = localStorage.getItem('dinomarker2' + data[i].stop);
+        let stop = data[i].stop;
+        if (stop === "5" || stop === "7" || stop === "10" || stop === "11" || stop === "12") {
+        } else {
+          loop += '<div class="card2" id="dino' + data[i].stop + '">';
+          if (marker) {
+            loop += '  <img src="' + data[i].stop_image + '" alt="Dinosaur" />';
+            loop += '  <div>';
+            loop += '    <h2>' + data[i].stop_name + '</h2>';
+            loop += '    <p>' + data[i].stop_holding + '</p>';
+            loop += '  </div>';
+            loop += '  <svg xmlns="http://www.w3.org/2000/svg" style="margin-left: auto; padding: 1rem 0.5rem 1rem 0; color: #ffca2b;" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-icon lucide-circle-check"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>';
+          } else {
+            loop += '  <img src="../dinos/images/dino-hero.jpg" alt="Dinosaur Discovery" />';
+            loop += '  <div>';
+            loop += '    <h2>' + data[i].stop_holding + '</h2>';
+            loop += '    <p>Not found yet</p>';
+            loop += '  </div>';
+          }
+          loop += '</div>';
+        }
+      }
+
+      document.getElementById("stops").innerHTML = '<div class="stops">' + loop + '</div>';
+      // console.log(data);
+    }
+  </script>
+</body>
+
+</html>
