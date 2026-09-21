@@ -63,7 +63,23 @@
         console.log(data[i].stop);
         let marker = localStorage.getItem('dinomarker2' + data[i].stop);
         let stop = data[i].stop;
-        if (stop === "5" || stop === "7" || stop === "12") {
+        if (stop === "11" || stop === "12" || stop === "13") {
+          loop += '<div class="card2" id="dino' + data[i].stop + '">';
+          if (marker) {
+            loop += '  <img src="' + data[i].stop_image + '" alt="Dinosaur" />';
+            loop += '  <div>';
+            loop += '    <h2>' + data[i].stop_name + '</h2>';
+            loop += '    <p>' + data[i].stop_holding + '</p>';
+            loop += '  </div>';
+            loop += '  <svg xmlns="http://www.w3.org/2000/svg" style="margin-left: auto; padding: 1rem 0.5rem 1rem 0; color: #ffca2b;" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-icon lucide-circle-check"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>';
+          } else {
+            loop += '  <img src="../dinos/images/Artboard 3-100.jpg" alt="Dinosaur Discovery" />';
+            loop += '  <div>';
+            loop += '    <h2>' + data[i].stop_holding + '</h2>';
+            loop += '    <p>Not found yet</p>';
+            loop += '  </div>';
+          }
+          loop += '</div>';
         } else {
           loop += '<div class="card2" id="dino' + data[i].stop + '">';
           if (marker) {
