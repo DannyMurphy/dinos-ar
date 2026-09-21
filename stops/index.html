@@ -22,7 +22,6 @@
 
     </div>
   </div>
-  </div>
 
   <div class="fixed">
     <img src="../images/codescanner.png" alt="Code scanner" height="30px"
@@ -37,6 +36,21 @@
 
     <button class="button-stops">Found Dinosaurs</button>
   </div>
+
+  <dialog id="dino-details" class="dino-details" aria-labelledby="details-title">
+    <div class="details-toolbar">
+      <h2 id="details-title"></h2>
+      <button type="button" id="close-details">Close</button>
+    </div>
+    <p id="flip-help">Tap the card to flip it.</p>
+    <button type="button" id="details-card" class="details-card" aria-describedby="flip-help" aria-label="Show back of card">
+      <span class="details-content">
+        <span class="details-front"><img id="details-front" alt=""></span>
+        <span class="details-back"><img id="details-back" alt=""></span>
+      </span>
+    </button>
+  </dialog>
+  <p id="audio-status" class="audio-status" role="status"></p>
 
   <script>
     async function getData() {
@@ -55,54 +69,121 @@
     }
     getData();
 
-    async function stops(data) {
-      // console.log(data.length);
+    function stops(data) {
+      const list = document.createElement('div');
+      list.className = 'stops';
+      for (const dino of data) {
+        const found = Boolean(localStorage.getItem('dinomarker2' + dino.stop));
+        const entry = document.createElement('div');
+        entry.className = 'card2';
+        entry.id = 'dino' + dino.stop;
 
-      let loop = "";
-      for (let i = 0; i < data.length; i++) {
-        console.log(data[i].stop);
-        let marker = localStorage.getItem('dinomarker2' + data[i].stop);
-        let stop = data[i].stop;
-        if (stop === "11" || stop === "12" || stop === "13") {
-          loop += '<div class="card2" id="dino' + data[i].stop + '">';
-          if (marker) {
-            loop += '  <img src="' + data[i].stop_image + '" alt="Dinosaur" />';
-            loop += '  <div>';
-            loop += '    <h2>' + data[i].stop_name + '</h2>';
-            loop += '    <p>' + data[i].stop_holding + '</p>';
-            loop += '  </div>';
-            loop += '  <svg xmlns="http://www.w3.org/2000/svg" style="margin-left: auto; padding: 1rem 0.5rem 1rem 0; color: #ffca2b;" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-icon lucide-circle-check"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>';
-          } else {
-            loop += '  <img src="../dinos/images/Artboard 3-100.jpg" alt="Dinosaur Discovery" />';
-            loop += '  <div>';
-            loop += '    <h2>' + data[i].stop_holding + '</h2>';
-            loop += '    <p>Not found yet</p>';
-            loop += '  </div>';
-          }
-          loop += '</div>';
-        } else {
-          loop += '<div class="card2" id="dino' + data[i].stop + '">';
-          if (marker) {
-            loop += '  <img src="' + data[i].stop_image + '" alt="Dinosaur" />';
-            loop += '  <div>';
-            loop += '    <h2>' + data[i].stop_name + '</h2>';
-            loop += '    <p>' + data[i].stop_holding + '</p>';
-            loop += '  </div>';
-            loop += '  <svg xmlns="http://www.w3.org/2000/svg" style="margin-left: auto; padding: 1rem 0.5rem 1rem 0; color: #ffca2b;" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-icon lucide-circle-check"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>';
-          } else {
-            loop += '  <img src="../dinos/images/Artboard 3-100.jpg" alt="Dinosaur Discovery" />';
-            loop += '  <div>';
-            loop += '    <h2>' + data[i].stop_holding + '</h2>';
-            loop += '    <p>Not found yet</p>';
-            loop += '  </div>';
-          }
-          loop += '</div>';
+        const image = document.createElement('img');
+        image.src = found ? dino.stop_image : '../dinos/images/Artboard 3-100.jpg';
+        image.alt = found ? dino.stop_name : 'Dinosaur Discovery';
+        const info = document.createElement('div');
+        const title = document.createElement('h2');
+        title.textContent = found ? dino.stop_name : dino.stop_holding;
+        const description = document.createElement('p');
+        description.textContent = found ? dino.stop_holding : 'Not found yet';
+        info.append(title, description);
+        entry.append(image, info);
+
+        if (found) {
+          const check = document.createElement('span');
+          check.className = 'found-check';
+          check.textContent = '✓';
+          check.setAttribute('aria-label', 'Found');
+          entry.append(check);
+          const actions = document.createElement('div');
+          actions.className = 'stop-actions';
+          const play = document.createElement('button');
+          play.type = 'button';
+          play.textContent = 'Play';
+          play.setAttribute('aria-label', 'Play audio for ' + dino.stop_name);
+          play.setAttribute('aria-pressed', 'false');
+          play.addEventListener('click', () => playAudio(dino, play));
+          const learn = document.createElement('button');
+          learn.type = 'button';
+          learn.textContent = 'Learn';
+          learn.setAttribute('aria-label', 'Learn about ' + dino.stop_name);
+          learn.setAttribute('aria-haspopup', 'dialog');
+          learn.addEventListener('click', () => showCard(dino));
+          actions.append(play, learn);
+          entry.append(actions);
         }
+        list.append(entry);
       }
-
-      document.getElementById("stops").innerHTML = '<div class="stops">' + loop + '</div>';
-      // console.log(data);
+      document.getElementById('stops').replaceChildren(list);
     }
+
+    let currentAudio = null;
+    let currentPlayButton = null;
+    const audioStatus = document.getElementById('audio-status');
+
+    function stopAudio() {
+      if (currentAudio) currentAudio.pause();
+      if (currentPlayButton) {
+        currentPlayButton.textContent = 'Play';
+        currentPlayButton.setAttribute('aria-pressed', 'false');
+        currentPlayButton.setAttribute('aria-label', currentPlayButton.dataset.playLabel);
+      }
+      currentAudio = null;
+      currentPlayButton = null;
+    }
+
+    async function playAudio(dino, button) {
+      const wasPlaying = currentPlayButton === button;
+      stopAudio();
+      audioStatus.textContent = '';
+      if (wasPlaying) return;
+
+      const audio = new Audio(dino.stop_audio);
+      currentAudio = audio;
+      currentPlayButton = button;
+      button.dataset.playLabel = 'Play audio for ' + dino.stop_name;
+      button.textContent = 'Stop';
+      button.setAttribute('aria-label', 'Stop audio for ' + dino.stop_name);
+      button.setAttribute('aria-pressed', 'true');
+      audio.addEventListener('ended', () => {
+        if (currentAudio === audio) stopAudio();
+      });
+      const failed = () => {
+        if (currentAudio !== audio) return;
+        stopAudio();
+        audioStatus.textContent = 'Audio could not be played. Please try again.';
+      };
+      audio.addEventListener('error', failed);
+      try {
+        await audio.play();
+      } catch (error) {
+        failed();
+      }
+    }
+
+    const details = document.getElementById('dino-details');
+    const card = document.getElementById('details-card');
+    function showCard(dino) {
+      document.getElementById('details-title').textContent = dino.stop_name;
+      const front = document.getElementById('details-front');
+      const back = document.getElementById('details-back');
+      front.src = dino.stop_front;
+      front.alt = dino.stop_name + ' card front';
+      back.src = dino.stop_back;
+      back.alt = dino.stop_name + ' card back';
+      card.classList.remove('active');
+      card.setAttribute('aria-label', 'Show back of card');
+      details.showModal();
+    }
+    card.addEventListener('click', () => {
+      const flipped = card.classList.toggle('active');
+      card.setAttribute('aria-label', flipped ? 'Show front of card' : 'Show back of card');
+    });
+    document.getElementById('close-details').addEventListener('click', () => details.close());
+    details.addEventListener('click', event => {
+      if (event.target === details) details.close();
+    });
+    window.addEventListener('pagehide', stopAudio);
   </script>
 </body>
 
