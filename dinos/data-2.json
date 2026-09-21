@@ -57,7 +57,7 @@
     },
     {
       "stop": "6",
-      "stop_holding": "Dinosaur 5",
+      "stop_holding": "Dinosaur 6",
       "stop_name": "Carcharodontosaurus",
       "stop_image": "/dinos/images/Carcharodontosaurus.jpg",
       "stop_audio": "/dinos/audio/Carcharodontosaurus.mp3",
@@ -79,7 +79,7 @@
     },
     {
       "stop": "8",
-      "stop_holding": "Dinosaur 6",
+      "stop_holding": "Dinosaur 8",
       "stop_name": "Muttaburrasaurus",
       "stop_image": "/dinos/images/Muttaburrasaurus.jpg",
       "stop_audio": "/dinos/audio/Muttaburrasaurus.mp3",
@@ -90,7 +90,7 @@
     },
     {
       "stop": "9",
-      "stop_holding": "Dinosaur 7",
+      "stop_holding": "Dinosaur 9",
       "stop_name": "Protoceratops",
       "stop_image": "/dinos/images/Protoceratops.jpg",
       "stop_audio": "/dinos/audio/Protoceratops.mp3",
@@ -101,7 +101,7 @@
     },
     {
       "stop": "10",
-      "stop_holding": "Dinosaur 8",
+      "stop_holding": "Dinosaur 10",
       "stop_name": "Styracosaurus",
       "stop_image": "/dinos/images/Styracosaurus.jpg",
       "stop_audio": "/dinos/audio/Styracosaurus.mp3",
@@ -112,7 +112,7 @@
     },
     {
       "stop": "11",
-      "stop_holding": "Dinosaur 9",
+      "stop_holding": "Dinosaur 11",
       "stop_name": "Therizinosaurus",
       "stop_image": "/dinos/images/Therizinosaurus.jpg",
       "stop_audio": "/dinos/audio/Therizinosaurus.mp3",
@@ -134,7 +134,7 @@
     },
     {
       "stop": "13",
-      "stop_holding": "Dinosaur 10",
+      "stop_holding": "Dinosaur 13",
       "stop_name": "Stegosaurus",
       "stop_image": "/dinos/images/Stegosaurus.jpg",
       "stop_audio": "/dinos/audio/Stegosaurus.mp3",
